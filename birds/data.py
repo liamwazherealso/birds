@@ -70,6 +70,12 @@ def display_stats(file_path):
     print(overall_stats)
 
 
+def get_games(file_path):
+    _, cleaned_data = load_and_process_data(file_path)
+    games = cleaned_data.groupby("game_id")
+    return {f"Game {i+1}": game for i, (_, game) in enumerate(games)}
+
+
 if __name__ == "__main__":
     # Example usage:
     file_path = "scores.csv"
